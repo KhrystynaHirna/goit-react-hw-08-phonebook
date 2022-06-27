@@ -1,85 +1,87 @@
-import { useState, useEffect } from 'react';
-import { useCreateContactMutation, useGetContactsQuery } from 'redux/contactsApi';
+import { useState } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import shortid from 'shortid';
-import s from './ContactForm.module.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import {
+  useGetContactsQuery,
+  useAddContactsMutation,
+} from '../../redux/contacts/contactsApi';
 
-  const ContactForm = () => {
+export default function ContactForm() {
+  const { data: contacts } = useGetContactsQuery();
+  const [addContact, { isLoading }] = useAddContactsMutation();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [createContact] = useCreateContactMutation();
-  const { data } = useGetContactsQuery();
 
-  const reset = () => {
-    setName('');
-    setNumber('');
+  const handleInputChange = () => event => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+
+      case 'number':
+        setNumber(value);
+        break;
+
+      default:
+        return;
+    }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const contact = {
-      id: shortid.generate(),
-      name,
-      number,
-    };
-    const contactFinder = data.find(
-      contact => contact.name === name || contact.number === number
-    );
-
-    if (contactFinder) {
-      Notify.warning(`${name} ${number} is already in contacts.`);
-      return;
+  const handleSubmit = event => {
+    event.preventDefault();
+    if (contacts.find(contact => contact.name === name)) {
+      return Notify.warning(`${name} is already in the contact list`);
     }
 
-    createContact(contact);
-
-    reset();
+    addContact({ name, number });
+    Notify.warning(`${name} was added to the contact list`);
+    resetForm();
   };
 
-
-  useEffect(() => {
-    name.length > 0 && number.length > 0
-      ? setIsDisabled(false)
-      : setIsDisabled(true);
-  }, [name, number]);
+  function resetForm() {
+    setName('');
+    setNumber('');
+  }
 
   return (
-    <form onSubmit={handleSubmit} className={s.container}>
-      <label className={s.label}>
-        Name:
-        <input
-          type="text"
-          name="name"
-          className={s.input_first }
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          value={name}
-          onChange={e => setName(e.currentTarget.value)}
-          required />
-      </label>
-          
-      <label className={s.label}>
-        Number:
-        <input
-          type="tel"
-          className={s.input_second}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={number}
-          name="number"
-          onChange={e => setNumber(e.currentTarget.value)}
-          required />
-      </label>
-
-      <button
-        className={s.button}
-        type="submit"
-        disabled={isDisabled}>
-        add contact    
-      </button>
-    </form>
+    <Card style={{ width: '500px', margin: '30px auto' }}>
+      <Card.Header as="h4">Add new contact</Card.Header>
+      <Card.Body>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="name">Name</Form.Label>
+            <Form.Control
+              placeholder="Enter contact name"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleInputChange(name)}
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+            <Form.Label htmlFor="number">Number</Form.Label>
+            <Form.Control
+              placeholder="Enter phone number"
+              type="tel"
+              name="number"
+              value={number}
+              onChange={handleInputChange(name)}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
+            {isLoading && <Spinner animation="border" variant="primary" />}
+          </Form.Group>
+          <Button variant="primary" type="submit" disabled={isLoading}>
+            Add contact
+          </Button>
+        </Form>
+      </Card.Body>
+    </Card>
   );
-};
-
-export default ContactForm;
+}

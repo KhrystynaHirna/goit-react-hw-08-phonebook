@@ -1,42 +1,34 @@
-import s from './ContactList.module.css';      
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { getFilter } from 'redux/contactsSlice';
-import { useGetContactsQuery, useDeleteContactMutation } from 'redux/contactsApi';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Card from 'react-bootstrap/Card';
+import ContactItem from './ContactItem/ContactItem';
+import { useGetContactsQuery } from '../../redux/contacts/contactsApi';
+import { getFilter } from '../../redux/contacts/contactsSlice';
 
-  const ContactList = () => {
-  const { data} = useGetContactsQuery();
-  const [deleteContact] = useDeleteContactMutation();
-  const filter = useSelector(getFilter);
- 
+export default function ContactList() {
+  const filterContact = useSelector(getFilter);
+  const { data: contacts, isSuccess } = useGetContactsQuery();
 
-  const filteredContacts = () => {
-    return data.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
-  let rendered = filter === '' ? data : filteredContacts();
-  return (
-    <>
-      <ul className={s.list}>
-        {data &&
-          rendered.map(({ name, id, number }) => (
-          <li className={s.item} key={id} id={id}>
-            {name}: {number}
+  if (!isSuccess) {
+    return;
+  }
 
-            <button
-              type="button"
-              className={s.button}
-              onClick={() => deleteContact(id)}>
-            Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-      {data && data.length === 0 && (
-        <p>no contacts available</p>
-      )}
-    </>
+  const formData = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filterContact.toLowerCase())
   );
-};
 
-export default ContactList;
+  return (
+    <Card style={{ width: '500px', margin: '30px auto' }}>
+      <Card.Header as="h4">Contact List</Card.Header>
+      <Card.Body>
+        <ListGroup style={{ width: '470px', margin: '10px auto' }}>
+          {contacts &&
+            formData.map(({ id, name, number }) => (
+              <ContactItem key={id} id={id} name={name} number={number} />
+            ))}
+        </ListGroup>
+      </Card.Body>
+    </Card>
+  );
+}
