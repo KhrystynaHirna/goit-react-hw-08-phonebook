@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import authSelectors from '../../redux/auth/auth-selectors';
+import authSelectors from '../../redux/auth/Auth-selectors';
 
 export default function PrivateRoute({
   redirectTo = '/',

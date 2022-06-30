@@ -1,9 +1,9 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import ContactForm from '../../ContactForm/ContactForm';
-import Filter from '../../Filter/Filter';
-import ContactList from '../../ContactList/ContactList';
+import ContactForm from '../../phonebookForm/ContactForm';
+import Filter from '../../filter/Filter';
+import ContactList from '../../contacts/ContactList';
 
 export default function ContactsPage() {
   return (

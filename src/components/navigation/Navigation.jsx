@@ -5,7 +5,7 @@ import { Nav } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import authSelectors from '../../redux/auth/auth-selectors';
+import authSelectors from '../../redux/auth/Auth-selectors';
 
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

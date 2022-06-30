@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import Navigation from '../Navigation/Navigation';
-import UserMenu from '../UserMenu/UserMenu';
-import AuthNav from '../AuthNav/AuthNav';
-import authSelectors from '../../redux/auth/auth-selectors';
+import Navigation from '../navigation/Navigation';
+import UserMenu from '../userMenu/UserMenu';
+import AuthNav from '../authNav/AuthNav';
+import authSelectors from '../../redux/auth/Auth-selectors';
 import Container from 'react-bootstrap/Container';
 import { Navbar, Nav } from 'react-bootstrap';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';

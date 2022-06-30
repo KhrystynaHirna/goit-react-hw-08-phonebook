@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 // import Spinner from 'react-bootstrap/Spinner';
-import App from 'components/app';
+import App from 'components/app/App';
 import './index.css';
-import store from 'redux/store'
+import store from 'redux/store/Store'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

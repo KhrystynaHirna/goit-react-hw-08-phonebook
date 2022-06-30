@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
-import ContactItem from './ContactItem/ContactItem';
-import { useGetContactsQuery } from '../../redux/contacts/contactsApi';
-import { getFilter } from '../../redux/contacts/contactsSlice';
+import ContactItem from './ContactItem';
+import { useGetContactsQuery } from '../../redux/contacts/ContactsApi';
+import { getFilter } from '../../redux/contacts/ContactsSlice';
 
 export default function ContactList() {
   const filterContact = useSelector(getFilter);

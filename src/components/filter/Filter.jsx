@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import { filter, getFilter } from '../../redux/contacts/contactsSlice';
+import { filter, getFilter } from '../../redux/contacts/ContactsSlice';
 
 export default function Filter() {
   const { name } = useSelector(getFilter);

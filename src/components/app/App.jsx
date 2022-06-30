@@ -2,16 +2,16 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect, Suspense, lazy } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import authOperation from '../redux/auth/auth-operation'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import PublicRoute from './Routes/PublicRoute';
-import PrivateRoute from './Routes/PrivateRoute';
-import AppBar from './AppBar/AppBar';
+import authOperation from '../../redux/auth/Auth-operations'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import PublicRoute from '../routes/PublicRoute';
+import PrivateRoute from '../routes/PrivateRoute';
+import AppBar from '../appBar/AppBar';
 
-const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-const RegisterPage  = lazy(() => import('./pages/RegisterPage/RegisterPage'));
-const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
-const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
+const HomePage = lazy(() => import('../pages/homePage/HomePage'));
+const RegisterPage  = lazy(() => import('../pages/registerPage/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/loginPage/LoginPage'));
+const ContactsPage = lazy(() => import('../pages/contactsPage/ContactsPage'));
 
 export default function App() {  
 const dispatch = useDispatch();

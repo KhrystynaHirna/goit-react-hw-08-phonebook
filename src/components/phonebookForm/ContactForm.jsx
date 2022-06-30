@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 import {
   useGetContactsQuery,
   useAddContactsMutation,
-} from '../../redux/contacts/contactsApi';
+} from '../../redux/contacts/ContactsApi';
 
 export default function ContactForm() {
   const { data: contacts } = useGetContactsQuery();

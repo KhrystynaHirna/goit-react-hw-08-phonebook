@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
-import { useRemoveContactsMutation } from '../../../redux/contacts/contactsApi';
+import { useRemoveContactsMutation } from '../../redux/contacts/ContactsApi';
 
 export default function ContactItem({ id, name, number }) {
   const [removeContact, { isLoading }] = useRemoveContactsMutation();

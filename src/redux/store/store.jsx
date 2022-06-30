@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {contactsApi} from './contacts/contactsApi';
+import {contactsApi} from '../contacts/ContactsApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import {
   persistStore,
@@ -10,9 +10,9 @@ import {
   PERSIST,
   PURGE,
   REGISTER, } from 'redux-persist';
-  import storage from 'redux-persist/lib/storage';
-import contactsSlice from "./contacts/contactsSlice";
-import authReduser from './auth/auth-slice'
+import storage from 'redux-persist/lib/storage';
+import contactsSlice from "../contacts/ContactsSlice";
+import authReduser from '../auth/Auth-slice'
 
 const middleware = getDefaultMiddleware =>  [
   ...getDefaultMiddleware({
