@@ -4,11 +4,12 @@ import Container from 'react-bootstrap/Container';
 import ContactForm from '../../phonebookForm/ContactForm';
 import Filter from '../../filter/Filter';
 import ContactList from '../../contacts/ContactList';
+import s from './ContactsPage.module.css';
 
 export default function ContactsPage() {
   return (
-    <Container className="mt-4">
-      <h2>Phonebook</h2>
+    <Container className={s.container}>
+      <h2 className={s.text}>Phonebook</h2>
       <Row>
         <Col>
           <ContactForm />

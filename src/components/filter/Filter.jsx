@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import { filter, getFilter } from '../../redux/contacts/ContactsSlice';
+import s from './Filter.module.css';
 
 export default function Filter() {
   const { name } = useSelector(getFilter);
@@ -15,13 +16,14 @@ export default function Filter() {
     <Card style={{ width: '500px', margin: '30px auto' }}>
       <Card.Header as="h4">Searching Contacts</Card.Header>
       <Card.Body>
-        <Form.Label>Find contacts by name</Form.Label>
+        <Form.Label className={s.label}>Find contacts by name</Form.Label>
         <Form.Control
           placeholder="Enter contact name"
           type="text"
           name="filter"
           value={name}
           onChange={onFilterInput}
+          className={s.input}
         />
       </Card.Body>
     </Card>

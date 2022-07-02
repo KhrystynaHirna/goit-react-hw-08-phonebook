@@ -1,0 +1,23 @@
+
+.nav {
+    display: flex;
+    justify-content: left;
+    color: black;
+    text-decoration: none;
+    margin-left: 120px;
+    
+    }
+    
+    .nav_home {
+    color: black;
+    text-decoration: none;
+    margin-right: 15px;
+    margin-left: auto;
+    margin-top: 10px;
+    }
+    
+    .nav_contacts {
+        color: black;
+        text-decoration: none;
+        margin-right: 120px;
+    }

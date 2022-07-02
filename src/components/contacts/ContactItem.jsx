@@ -8,6 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import { useRemoveContactsMutation } from '../../redux/contacts/ContactsApi';
+import s from './ContactItem.module.css';
 
 export default function ContactItem({ id, name, number }) {
   const [removeContact, { isLoading }] = useRemoveContactsMutation();
@@ -19,14 +20,13 @@ export default function ContactItem({ id, name, number }) {
   return (
     <ListGroup.Item key={id}>
       {isLoading && <Spinner animation="border" variant="primary" />}
-      <Row>
+      <Row >
         <Col>
-          <Card.Text style={{ textAlign: 'left' }}>{name}</Card.Text>
-          <Card.Text style={{ textAlign: 'left' }}>tel. {number}</Card.Text>
+          <Card.Text >{name}: {number}</Card.Text>
         </Col>
         <Col>
           <Button
-            style={{ marginTop: '12px' }}
+            className={s.button}
             variant="primary"
             type="button"
             onClick={() => onRemoveContact(id)}

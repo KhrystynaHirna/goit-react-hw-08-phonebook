@@ -6,20 +6,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import authSelectors from '../../redux/auth/Auth-selectors';
+import s from './Navigation.module.css';
 
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <Container>
-      <Row>
+    <Container >
+      <Row className={s.nav}>
         <Col>
-          <Nav.Link as={NavLink} to="/">
-            HOME
+          <Nav.Link as={NavLink} to="/" className={s.nav_home}>
+            Home
           </Nav.Link>
         </Col>
         {isLoggedIn && (
           <Col>
-            <Nav.Link as={NavLink} to="/contacts">
+            <Nav.Link as={NavLink} to="/contacts" className={s.nav_contacts}>
               Contacts
             </Nav.Link>
           </Col>

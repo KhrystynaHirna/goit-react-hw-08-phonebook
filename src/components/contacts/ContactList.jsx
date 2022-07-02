@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import ContactItem from './ContactItem';
 import { useGetContactsQuery } from '../../redux/contacts/ContactsApi';
 import { getFilter } from '../../redux/contacts/ContactsSlice';
+import s from './ContactList.module.css';
 
 export default function ContactList() {
   const filterContact = useSelector(getFilter);
@@ -19,10 +20,10 @@ export default function ContactList() {
   );
 
   return (
-    <Card style={{ width: '500px', margin: '30px auto' }}>
+    <Card className={s.list} style={{ width: '500px', margin: '30px auto' }}>
       <Card.Header as="h4">Contact List</Card.Header>
       <Card.Body>
-        <ListGroup style={{ width: '470px', margin: '10px auto' }}>
+        <ListGroup style={{ width: '470px', margin: '10px auto' }} className={s.item}>
           {contacts &&
             formData.map(({ id, name, number }) => (
               <ContactItem key={id} id={id} name={name} number={number} />

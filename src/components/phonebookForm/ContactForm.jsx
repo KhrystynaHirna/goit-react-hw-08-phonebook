@@ -4,10 +4,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import {
-  useGetContactsQuery,
-  useAddContactsMutation,
-} from '../../redux/contacts/ContactsApi';
+import { useGetContactsQuery, useAddContactsMutation, } from '../../redux/contacts/ContactsApi';
+import s from './ContactForm.module.css';
 
 export default function ContactForm() {
   const { data: contacts } = useGetContactsQuery();
@@ -48,13 +46,14 @@ export default function ContactForm() {
   }
 
   return (
-    <Card style={{ width: '500px', margin: '30px auto' }}>
-      <Card.Header as="h4">Add new contact</Card.Header>
-      <Card.Body>
+    <Card  className={s.container}>
+      <Card as="h4">Add new contact</Card>
+      <Card className={s.container}>
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="name">Name</Form.Label>
+          <Form.Group className={s.container}>
+            <Form.Label htmlFor="name" className={s.label}>Name</Form.Label>
             <Form.Control
+              className={s.input_first}
               placeholder="Enter contact name"
               type="text"
               name="name"
@@ -64,8 +63,9 @@ export default function ContactForm() {
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
             />
-            <Form.Label htmlFor="number">Number</Form.Label>
+            <Form.Label htmlFor="number" className={s.label}>Number</Form.Label>
             <Form.Control
+              className={s.input_second}
               placeholder="Enter phone number"
               type="tel"
               name="number"
@@ -77,11 +77,11 @@ export default function ContactForm() {
             />
             {isLoading && <Spinner animation="border" variant="primary" />}
           </Form.Group>
-          <Button variant="primary" type="submit" disabled={isLoading}>
+          <Button variant="primary" type="submit" disabled={isLoading} className={s.button}>
             Add contact
           </Button>
         </Form>
-      </Card.Body>
+      </Card>
     </Card>
   );
 }

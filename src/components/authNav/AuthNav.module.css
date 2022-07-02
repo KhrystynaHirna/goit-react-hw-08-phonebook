@@ -1,0 +1,17 @@
+.nav {
+display: flex;
+justify-content: right;
+}
+
+.nav_registration {
+color: black;
+text-decoration: none;
+margin-right: 15px;
+margin-left: auto;
+}
+
+.nav_login {
+    color: black;
+    text-decoration: none;
+    margin-right: 120px;
+}

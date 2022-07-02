@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import authOperations from '../../../redux/auth/Auth-operations';
+import s from './LoginPage.module.css';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function LoginPage() {
       <Card.Body>
         <Form onSubmit={handleSubmit} autoComplete="off">
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>
+            <Form.Label className={s.label}>
               Email
               <Form.Control
                 type="email"
@@ -43,6 +44,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={handleChange}
                 style={{ width: '400px' }}
+                className={s.input_first}
               />
             </Form.Label>
           </Form.Group>
@@ -56,10 +58,11 @@ export default function LoginPage() {
                 value={password}
                 onChange={handleChange}
                 style={{ width: '400px' }}
+                className={s.input_second}
               />
             </Form.Label>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" className={s.button}>
             Log in
           </Button>
         </Form>

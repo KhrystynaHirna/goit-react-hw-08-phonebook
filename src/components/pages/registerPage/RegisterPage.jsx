@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import authOperations from '../../../redux/auth/Auth-operations';
+import s from './RegisterPage.module.css';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
@@ -38,13 +39,13 @@ export default function RegisterPage() {
       <Card.Body>
       <Form onSubmit={handleSubmit} autoComplete="off">
       <Form.Group  className="mb-3" controlId="formBasicText">
-      <Form.Label>
+      <Form.Label className={s.label}>
           Name
-        <Form.Control placeholder="Enter name" type="text" name="name" style={{width: '400px'}} value={name} onChange={handleChange} />
+        <Form.Control placeholder="Enter name" type="text" name="name" style={{width: '400px'}} value={name} onChange={handleChange} className={s.input_first}/>
         </Form.Label>
         </Form.Group>
         <Form.Group  className="mb-3" controlId="formBasicEmail">
-        <Form.Label>
+        <Form.Label className={s.label}>
           Email
           <Form.Control placeholder="Enter email"
             type="email"
@@ -52,11 +53,12 @@ export default function RegisterPage() {
             style={{width: '400px'}}
             value={email}
             onChange={handleChange}
+            className={s.input_second}
           />
         </Form.Label>
         </Form.Group>
         <Form.Group  className="mb-3" controlId="formBasicPassword">
-        <Form.Label>
+        <Form.Label className={s.label}>
           Password
           <Form.Control placeholder="Enter password"
             type="password"
@@ -64,10 +66,11 @@ export default function RegisterPage() {
             style={{width: '400px'}}
             value={password}
             onChange={handleChange}
+            className={s.input_third}
           />
         </Form.Label>
         </Form.Group>
-        <Button variant="primary" type="submit">Register</Button>
+        <Button variant="primary" type="submit" className={s.button}>Register</Button>
       </Form>
       </Card.Body>
     </Card>

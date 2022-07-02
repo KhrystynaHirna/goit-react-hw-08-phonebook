@@ -2,11 +2,11 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect, Suspense, lazy } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import authOperation from '../../redux/auth/Auth-operations'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import authOperation from '../../redux/auth/Auth-operations';
 import PublicRoute from '../routes/PublicRoute';
 import PrivateRoute from '../routes/PrivateRoute';
 import AppBar from '../appBar/AppBar';
+import s from './App.module.css';
 
 const HomePage = lazy(() => import('../pages/homePage/HomePage'));
 const RegisterPage  = lazy(() => import('../pages/registerPage/RegisterPage'));
@@ -20,10 +20,10 @@ useEffect(() => {
   dispatch(authOperation.fetchCurrentUser())
 }, [dispatch]);
 
-  return (
-    <>
-      <AppBar />
-      <Suspense fallback={<Spinner animation="border" variant="primary" className='mt-4'/>}>
+  return (    
+      <div className={s.container}>  
+      <AppBar/>
+      <Suspense fallback={<Spinner animation="border" variant="primary"/>}>
         <Routes>
         <Route element={<PublicRoute/>}>
           <Route path='/' element={<HomePage/>}/>
@@ -38,8 +38,7 @@ useEffect(() => {
           <Route path='/contacts' element={<ContactsPage/>}/>
         </Route>
       </Routes>
-      </Suspense>
-      
-    </>
+        </Suspense> 
+        </div> 
   );
 }
