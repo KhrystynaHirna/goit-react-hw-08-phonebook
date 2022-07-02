@@ -14,7 +14,3 @@
     width: 80px;
     height: 30px;
 }
-.item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}

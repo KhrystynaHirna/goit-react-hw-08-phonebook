@@ -11,14 +11,14 @@ export default function AuthNav() {
     <Container>
       <Row className={s.nav}>     
         <Col>
-          <Nav.Link as={NavLink} to="/register" className={s.nav_registration}>
+          <Nav as={NavLink} to="/register" className={s.nav_registration}>
             Registration
-          </Nav.Link>
+          </Nav>
         </Col>
         <Col>
-          <Nav.Link as={NavLink} to="/login" className={s.nav_login}>
+          <Nav as={NavLink} to="/login" className={s.nav_login}>
             Login
-          </Nav.Link>
+          </Nav>
         </Col>
       </Row>
     </Container>

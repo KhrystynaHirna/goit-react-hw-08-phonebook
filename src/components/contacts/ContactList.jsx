@@ -20,16 +20,15 @@ export default function ContactList() {
   );
 
   return (
-    <Card className={s.list} style={{ width: '500px', margin: '30px auto' }}>
-      <Card.Header as="h4">Contact List</Card.Header>
-      <Card.Body>
-        <ListGroup style={{ width: '470px', margin: '10px auto' }} className={s.item}>
+    <Card className={s.list} >
+      <Card as="h4">Contact List</Card>
+        <ListGroup  >
           {contacts &&
             formData.map(({ id, name, number }) => (
               <ContactItem key={id} id={id} name={name} number={number} />
             ))}
         </ListGroup>
-      </Card.Body>
+      
     </Card>
   );
 }

@@ -13,10 +13,9 @@ export default function Filter() {
     dispatch(filter(event.target.value));
   };
   return (
-    <Card style={{ width: '500px', margin: '30px auto' }}>
-      <Card.Header as="h4">Searching Contacts</Card.Header>
-      <Card.Body>
-        <Form.Label className={s.label}>Find contacts by name</Form.Label>
+    <Card >
+      <Card as="h4">Searching Contacts</Card>   
+        <Form className={s.label}>Find contacts by name</Form>
         <Form.Control
           placeholder="Enter contact name"
           type="text"
@@ -25,7 +24,6 @@ export default function Filter() {
           onChange={onFilterInput}
           className={s.input}
         />
-      </Card.Body>
     </Card>
   );
 }

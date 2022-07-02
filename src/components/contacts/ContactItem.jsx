@@ -18,11 +18,11 @@ export default function ContactItem({ id, name, number }) {
   }
 
   return (
-    <ListGroup.Item key={id}>
+    <ListGroup key={id}>
       {isLoading && <Spinner animation="border" variant="primary" />}
-      <Row >
+      <Row className={s.item}>
         <Col>
-          <Card.Text >{name}: {number}</Card.Text>
+          <Card >{name}: {number}</Card>
         </Col>
         <Col>
           <Button
@@ -35,7 +35,7 @@ export default function ContactItem({ id, name, number }) {
           </Button>
         </Col>
       </Row>
-    </ListGroup.Item>
+    </ListGroup>
   );
 }
 
