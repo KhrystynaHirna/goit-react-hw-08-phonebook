@@ -14,15 +14,15 @@ const Navigation = () => {
     <Container >
       <Row className={s.nav}>
         <Col>
-          <Nav.Link as={NavLink} to="/" className={s.nav_home}>
+          <Nav as={NavLink} to="/" className={s.nav_home}>
             Home
-          </Nav.Link>
+          </Nav>
         </Col>
         {isLoggedIn && (
           <Col>
-            <Nav.Link as={NavLink} to="/contacts" className={s.nav_contacts}>
+            <Nav as={NavLink} to="/contacts" className={s.nav_contacts}>
               Contacts
-            </Nav.Link>
+            </Nav>
           </Col>
         )}
       </Row>

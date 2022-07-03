@@ -38,13 +38,20 @@ export default function RegisterPage() {
       <Card.Header as="h2">Register</Card.Header>
       <Card.Body>
       <Form onSubmit={handleSubmit} autoComplete="off">
-      <Form.Group  className="mb-3" controlId="formBasicText">
+      <Form.Group controlId="formBasicText">
       <Form.Label className={s.label}>
           Name
-        <Form.Control placeholder="Enter name" type="text" name="name" style={{width: '400px'}} value={name} onChange={handleChange} className={s.input_first}/>
+        <Form.Control placeholder="Enter name" 
+        type="text" 
+        name="name" 
+        style={{width: '400px'}} 
+        value={name} 
+        onChange={handleChange} 
+        className={s.input_first}/>
+
         </Form.Label>
         </Form.Group>
-        <Form.Group  className="mb-3" controlId="formBasicEmail">
+        <Form.Group controlId="formBasicEmail">
         <Form.Label className={s.label}>
           Email
           <Form.Control placeholder="Enter email"
@@ -57,7 +64,7 @@ export default function RegisterPage() {
           />
         </Form.Label>
         </Form.Group>
-        <Form.Group  className="mb-3" controlId="formBasicPassword">
+        <Form.Group controlId="formBasicPassword">
         <Form.Label className={s.label}>
           Password
           <Form.Control placeholder="Enter password"
